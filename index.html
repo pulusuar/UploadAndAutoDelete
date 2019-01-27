@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>File Upload</title>
+	<script type="text/javascript">
+		function updatepicture(pic){
+			document.getElementById("iframe").setAttribute("src",pic);
+		}
+		
+		var selDiv = "";
+		document.addEventListener("DOMContentLoaded", init, false);
+		function init() {
+			document.querySelector('#file').addEventListener('change', handleFileSelect, false);
+			selDiv = document.querySelector("#selectedFiles");
+		}
+		function handleFileSelect(e) {
+			if(!e.target.files) return;
+			selDiv.innerHTML = "";
+			var files = e.target.files;
+			for(var i=0; i<files.length; i++) {
+				var f = files[i];
+			}	
+		}
+	</script>
+
+</head>
+<body>
+<pre>
+	<h3>Upload File</h3>
+	<form method="POST" id="form" action="upload.php" enctype="multipart/form-data" target="iframe">
+		<input type='file' id='file' name='file' accept=".pdf,.png,.jpg,.jpeg" /><br />
+		<input type="submit" name="submit" id="submit" value="Upload File" /><br />
+		<p id="message"></p>
+		<div id="selectedFiles"></div>
+	</form>
+	<iframe name="iframe" id="iframe" style="display:none">
+		
+	</iframe>
+</pre>
+</body>
+</html>
